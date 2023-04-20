@@ -1,6 +1,6 @@
 import streamlit as st
-import pandas as pd
 import numpy as np
+import pandas as pd
 from PIL import Image
 import time
 
@@ -47,7 +47,7 @@ rr = pd.DataFrame(
 
 st.map(rr)
 if st.checkbox('show image'):
- img = Image.open('20140825_120747451_iOS.jpg')
+ img = Image.open('20141218_154651.JPG')
  st.image(img,caption="test",use_column_width=True)
 
 
