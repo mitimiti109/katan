@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import time
 import os
+import plotly.express as px
 
 col1,col2,col3,col4,col5 = st.columns(5)
 with col1:
@@ -141,7 +142,7 @@ if st.button("Clear"):
 
 if st.button("start"):
    st.session_state.i =1 
-st.write(st.session_state.i)
+#st.write(st.session_state.i)
 
 #jikan_list = []
 #jikan_list.append(time.strftime('%H:%M:%S'))
@@ -190,7 +191,11 @@ line_data.set_index("jikan",inplace=True)
 #st.table(line_data)
 line_data_t = line_data
 #st.table(line_data_t)
-st.line_chart(line_data_t)
+
+#st.line_chart(line_data_t)
+
+fig = px.line(line_data_t, title='カタン順位履歴',color_discrete_map={"赤":"red","青":"blue","黄":"yellow","白":"black"})
+st.plotly_chart(fig)
 
 
 #if st.session_state.i == 1:
