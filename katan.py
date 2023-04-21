@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import time
+import os
 
 col1,col2,col3,col4,col5 = st.columns(5)
 with col1:
@@ -130,6 +131,86 @@ st.write('<span style="color:black;background:ivory"><font size="1">____________
 
 toshi_count = col1_toshi + col2_toshi + col3_toshi + col4_toshi + col1_meto +col2_meto +col3_meto +col4_meto
 st.write(f'<span style="color:black;background:ivory"><font size="5">合計都市数={toshi_count}</front></span>',unsafe_allow_html=True)
+
+if 'i' not in st.session_state:
+   st.session_state.i = 0
+
+if st.button("Clear"):
+   st.session_state.i = 0
+   os.remove('test')
+
+if st.button("start"):
+   st.session_state.i =1 
+st.write(st.session_state.i)
+
+#jikan_list = []
+#jikan_list.append(time.strftime('%H:%M:%S'))
+#st.table(jikan_list)
+#score_red_list = []
+#score_red_list.append(col1_point)
+#st.table(score_red_list)
+#dict = {"jikan":jikan_list,"red_score":score_red_list}
+#df= pd.DataFrame(dict)
+#st.table(df)
+#df.to_csv("test",mode='a')
+
+#if st.session_state.i == 0:
+#   os.remove('test')
+#   dict_w = {"jikan":0,"赤":0,"青":0,"黄":0,"白":0}
+
+
+
+#   jikan_list = []
+#   jikan_list.append(time.strftime('%H:%M:%S'))
+#   score_red_list = []
+#   score_red_list.append(col1_point)
+#   dict = {"jikan":jikan_list,"red_score":score_red_list}
+#   df= pd.DataFrame(dict)
+#   df.to_csv('test')
+
+if st.session_state.i == 1:
+   jikan_list = []
+   jikan_list.append(time.strftime('%H:%M:%S'))
+   score_red_list = []
+   score_red_list.append(col1_point)
+   score_blue_list = []
+   score_blue_list.append(col2_point)
+   score_yellow_list = []
+   score_yellow_list.append(col3_point)
+   score_white_list = []
+   score_white_list.append(col4_point)      
+
+   dict = {"jikan":jikan_list,"赤":score_red_list,"青":score_blue_list,"黄":score_yellow_list,"白":score_white_list}
+   df= pd.DataFrame(dict)
+   df.to_csv('test',mode='a',index=False,header=False)
+
+line_data = pd.read_csv('test')
+line_data.columns=["jikan","赤","青","黄","白"]
+line_data.set_index("jikan",inplace=True)
+#st.table(line_data)
+line_data_t = line_data
+#st.table(line_data_t)
+st.line_chart(line_data_t)
+
+
+#if st.session_state.i == 1:
+# for k in range(10):
+#   col1_point = col1_kai + col1_toshi*2 +col1_meto*4 + col1_poi + col1_shouall +col1_kouall
+#   jikan_list.append(time.strftime('%H:%M:%S'))
+#   score_red_list.append(col1_point)
+#   st.table(score_red_list)
+#   st.table(jikan_list)
+#   time.sleep(1)
+
+#jikan_list = []
+#jikan_list.append(time.strftime('%H:%M:%S'))
+#
+#score_red_list = []
+#score_red_list.append(col1_point)
+#
+#dict = {"jikan":jikan_list,"red_score":score_red_list}
+#df= pd.DataFrame(dict)
+#df.to_csv('test')
 
 
 #if 'i' not in st.session_state:
