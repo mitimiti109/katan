@@ -1,10 +1,11 @@
 import streamlit as st
 import pandas as pd
+import time
 
 col1,col2,col3,col4,col5 = st.columns(5)
 with col1:
     st.image("red.jpg")
-    st.write("開拓地")
+    st.write("開拓地        - +")
     col1_kai = st.number_input("col1_kait",0,10,1,label_visibility="collapsed")
     st.write("都市")
     col1_toshi = st.number_input("ol1_toshit",0,10,1,label_visibility="collapsed")
@@ -15,6 +16,7 @@ with col1:
     #col1_point = col1_kai + col1_toshi*2 +col1_meto*4 + col1_poi
     #st.write("_____________________________")
     #st.write('合計ポイント',col1_point)      
+
 with col2:
     st.image("blue.jpg")
     st.write("開拓地")
@@ -83,22 +85,22 @@ else:
    col4_shouall =0
 
 if kouall == "赤":
-   col1_kouall =1
+   col1_kouall =2
 else:
    col1_kouall =0
 
 if kouall == "青":
-   col2_kouall =1
+   col2_kouall =2
 else:
    col2_kouall =0
 
 if kouall == "黄":
-   col3_kouall =1
+   col3_kouall =2
 else:
    col3_kouall =0
 
 if  kouall == "白":
-   col4_kouall =1
+   col4_kouall =2
 else:
    col4_kouall =0
 
@@ -128,3 +130,54 @@ st.write('<span style="color:black;background:ivory"><font size="1">____________
 
 toshi_count = col1_toshi + col2_toshi + col3_toshi + col4_toshi + col1_meto +col2_meto +col3_meto +col4_meto
 st.write(f'<span style="color:black;background:ivory"><font size="5">合計都市数={toshi_count}</front></span>',unsafe_allow_html=True)
+
+
+#if 'i' not in st.session_state:
+#   st.session_state.i = 0
+
+#def score_def():
+#    score_red_list = []
+#    return score_red_list
+
+#def jikan_def():
+#    jikan_list = []
+#    return jikan_list
+
+
+#@st.cache_data(score_def(),jikan_def())
+
+#score_red_list =score_def()
+#jikan_list = jikan_def()
+
+
+
+#def cash_crear():
+#   ikan_list = []
+#   score_red_list = []
+#   st.cache_data.clear()
+
+
+#if st.button("Clear"):
+#   st.session_state.i = 0
+#   cash_crear()
+
+#if st.button("start"):
+#   st.session_state.i =1 
+
+
+
+#if st.session_state.i == 1:
+# for k in range(10):
+#   col1_point = col1_kai + col1_toshi*2 +col1_meto*4 + col1_poi + col1_shouall +col1_kouall
+#   jikan_list.append(time.strftime('%H:%M:%S'))
+#   score_red_list.append(col1_point)
+#   st.table(score_red_list)
+#   st.table(jikan_list)
+#   time.sleep(1)
+#
+#
+#
+#df= pd.DataFrame({
+#            'red': pd.Series(score_red_list,index=jikan_list),
+#   })
+#st.table(df)
