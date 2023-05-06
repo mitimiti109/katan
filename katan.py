@@ -151,7 +151,8 @@ with col9:
     st.write(f'<span style="color:black;background:ivory"><font size="5">合計{col4_point}P</front></span>',unsafe_allow_html=True)
 st.write('<span style="color:black;background:ivory"><font size="1">______________________________________________________________________________________________________</front></span>',unsafe_allow_html=True)
 
-toshi_count = col1_toshi + col2_toshi + col3_toshi + col4_toshi + col1_meto +col2_meto +col3_meto +col4_meto
+#toshi_count = col1_toshi + col2_toshi + col3_toshi + col4_toshi + col1_meto +col2_meto +col3_meto +col4_meto
+toshi_count = col1_toshi + col2_toshi + col3_toshi + col4_toshi
 st.write(f'<span style="color:black;background:ivory"><font size="5">合計都市数={toshi_count}</front></span>',unsafe_allow_html=True)
 
 if 'i' not in st.session_state:
